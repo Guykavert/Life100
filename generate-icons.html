@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate Icons</title>
+</head>
+<body>
+    <canvas id="canvas" width="512" height="512" style="border:1px solid #000;"></canvas>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Фон
+        ctx.fillStyle = '#5d4037';
+        ctx.fillRect(0, 0, 512, 512);
+        
+        // Текст иконки
+        ctx.fillStyle = '#d7ccc8';
+        ctx.font = 'bold 200px Arial';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('📖', 256, 256);
+        
+        // Создаем ссылки для скачивания
+        const link192 = document.createElement('a');
+        link192.download = 'icon-192.png';
+        link192.href = canvas.toDataURL();
+        link192.textContent = 'Скачать icon-192.png';
+        
+        const link512 = document.createElement('a');
+        link512.download = 'icon-512.png';
+        link512.href = canvas.toDataURL();
+        link512.textContent = 'Скачать icon-512.png';
+        
+        document.body.appendChild(document.createElement('br'));
+        document.body.appendChild(link192);
+        document.body.appendChild(document.createElement('br'));
+        document.body.appendChild(link512);
+    </script>
+</body>
+</html>

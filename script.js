@@ -128,6 +128,19 @@ function loadTasks() {
     });
 }
 
+// PWA Registration
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('./sw.js')
+      .then(function(registration) {
+        console.log('✅ ServiceWorker зарегистрирован успешно:', registration.scope);
+      })
+      .catch(function(error) {
+        console.log('❌ Ошибка регистрации ServiceWorker:', error);
+      });
+  });
+}
+
 // Загружаем задачи при загрузке страницы
 window.onload = function() {
     setCurrentDate();
@@ -139,4 +152,11 @@ window.onload = function() {
             addTask();
         }
     });
+    
+    // Показываем сообщение об установке PWA
+    setTimeout(() => {
+        if (window.matchMedia('(display-mode: browser)').matches) {
+            console.log('💡 Подсказка: Добавьте приложение на главный экран для лучшего опыта!');
+        }
+    }, 3000);
 };
