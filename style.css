@@ -9,15 +9,7 @@
 
 body {
     font-family: 'EB Garamond', serif;
-    background: 
-        linear-gradient(135deg, #2c1810 0%, #1a120b 100%),
-        repeating-linear-gradient(
-            45deg,
-            transparent,
-            transparent 10px,
-            rgba(139, 69, 19, 0.1) 10px,
-            rgba(139, 69, 19, 0.1) 20px
-        );
+    background: #2c1810;
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -29,11 +21,6 @@ body {
     background: #fefbe7;
     border: 2px solid #8b4513;
     border-radius: 2px;
-    box-shadow: 
-        0 10px 30px rgba(0, 0, 0, 0.5),
-        inset 0 0 0 1px #e8dfca;
-    position: relative;
-    overflow: hidden;
     width: 100%;
     max-width: 600px;
 }
@@ -43,64 +30,31 @@ body {
     padding: 40px 50px 40px 60px;
     min-height: 700px;
     background: 
-        linear-gradient(to bottom, #fefbe7 0%, #fcf5e3 100%);
-}
-
-.lines {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
+        linear-gradient(to bottom, #fefbe7 0%, #fcf5e3 100%),
         repeating-linear-gradient(
             to bottom,
             transparent,
-            transparent 23px,
-            #e0d6c8 23px,
-            #e0d6c8 24px
+            transparent 24px,
+            #e0d6c8 24px,
+            #e0d6c8 25px
         );
-    pointer-events: none;
-    z-index: 1;
-}
-
-.paper::before {
-    content: '';
-    position: absolute;
-    left: 30px;
-    top: 0;
-    bottom: 0;
-    width: 1px;
-    background: 
-        repeating-linear-gradient(
-            to bottom,
-            transparent,
-            transparent 5px,
-            #d4c4b4 5px,
-            #d4c4b4 7px
-        );
-    z-index: 1;
 }
 
 .header {
     text-align: center;
     margin-bottom: 30px;
-    position: relative;
-    z-index: 2;
 }
 
 .header h1 {
     font-family: 'Cinzel Decorative', cursive;
     font-size: 2.2rem;
     color: #2c1810;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
     letter-spacing: 3px;
     margin-bottom: 10px;
 }
 
 .date {
     font-family: 'MedievalSharp', cursive;
-    font-size: 1rem;
     color: #5d4037;
     font-style: italic;
 }
@@ -109,8 +63,6 @@ body {
     display: flex;
     gap: 15px;
     margin-bottom: 25px;
-    position: relative;
-    z-index: 2;
 }
 
 #taskInput {
@@ -120,28 +72,11 @@ body {
     border-radius: 3px;
     font-family: 'EB Garamond', serif;
     font-size: 1.2rem;
-    background: rgba(255, 255, 255, 0.9);
-    box-shadow: 
-        inset 0 1px 3px rgba(0, 0, 0, 0.1),
-        0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-}
-
-#taskInput:focus {
-    outline: none;
-    border-color: #8b4513;
-    box-shadow: 
-        inset 0 1px 3px rgba(0, 0, 0, 0.2),
-        0 0 8px rgba(139, 69, 19, 0.3);
-}
-
-#taskInput::placeholder {
-    color: #8d6e63;
-    font-style: italic;
+    background: white;
 }
 
 .add-btn {
-    background: linear-gradient(135deg, #2c1810 0%, #5d4037 100%);
+    background: #5d4037;
     border: 2px solid #8b4513;
     border-radius: 5px;
     color: #d7ccc8;
@@ -149,48 +84,12 @@ body {
     font-family: 'Cinzel Decorative', cursive;
     font-size: 1rem;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 
-        0 4px 8px rgba(0, 0, 0, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2);
     min-width: 120px;
-    position: relative;
-    overflow: hidden;
-}
-
-.add-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 
-        0 6px 12px rgba(0, 0, 0, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.3);
-    background: linear-gradient(135deg, #3e2723 0%, #6d4c41 100%);
-}
-
-.add-btn:active {
-    transform: translateY(0);
-}
-
-.add-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    transition: left 0.5s;
-}
-
-.add-btn:hover::before {
-    left: 100%;
 }
 
 .tasks-container {
-    position: relative;
-    z-index: 2;
     max-height: 400px;
     overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
 }
 
 ul {
@@ -200,23 +99,12 @@ ul {
 
 .task-item {
     counter-increment: task-counter;
-    display: flex;
-    align-items: center;
-    padding: 8px 15px 8px 45px;
-    margin-bottom: 2px;
-    cursor: pointer;
-    transition: all 0.3s ease;
     position: relative;
-    min-height: 32px;
-    border-bottom: 1px dashed transparent;
-    -webkit-tap-highlight-color: transparent;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    user-select: none;
-}
-
-.task-item:hover {
-    border-bottom-color: #d7ccc8;
+    padding: 0 50px 0 45px;
+    margin: 0;
+    cursor: pointer;
+    min-height: 24px;
+    line-height: 24px;
 }
 
 .task-item::before {
@@ -229,54 +117,39 @@ ul {
     font-weight: bold;
     width: 25px;
     text-align: right;
+    line-height: 24px;
 }
 
 .task-text {
-    flex-grow: 1;
-    font-size: 1.3rem;
+    display: block;
+    font-size: 1.2rem;
     font-family: 'EB Garamond', serif;
-    transition: all 0.3s ease;
-    line-height: 1.6;
-    padding: 2px 0;
-    word-wrap: break-word;
-    word-break: break-word;
+    line-height: 24px;
+    word-break: break-all;
     overflow-wrap: break-word;
     white-space: normal;
+    padding: 0;
+    margin: 0;
 }
 
 .completed .task-text {
     text-decoration: line-through;
     color: #8d6e63;
-    font-style: italic;
-}
-
-.completed .task-item::before {
-    color: #bcaaa4;
-    text-decoration: line-through;
 }
 
 .delete-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
     background: none;
     border: 1px solid #bcaaa4;
     color: #5d4037;
     cursor: pointer;
-    font-size: 1.1rem;
-    padding: 4px 8px;
+    font-size: 1rem;
+    padding: 2px 6px;
     border-radius: 3px;
-    transition: all 0.3s ease;
     font-family: 'MedievalSharp', cursive;
-    opacity: 0;
-    margin-left: 10px;
-}
-
-.task-item:hover .delete-btn {
-    opacity: 1;
-}
-
-.delete-btn:hover {
-    background: #5d4037;
-    color: #d7ccc8;
-    border-color: #5d4037;
 }
 
 .page-number {
@@ -286,176 +159,22 @@ ul {
     font-family: 'Cinzel Decorative', cursive;
     color: #8d6e63;
     font-size: 0.9rem;
-    z-index: 2;
-}
-
-@keyframes fadeIn {
-    from { 
-        opacity: 0; 
-        transform: translateY(-10px); 
-    }
-    to { 
-        opacity: 1; 
-        transform: translateY(0); 
-    }
-}
-
-@keyframes fadeOut {
-    from { 
-        opacity: 1; 
-        transform: translateX(0); 
-    }
-    to { 
-        opacity: 0; 
-        transform: translateX(100px); 
-    }
-}
-
-.task-item {
-    animation: fadeIn 0.4s ease;
 }
 
 @media (max-width: 768px) {
     body {
         padding: 10px;
-        display: block;
-        min-height: 100vh;
-        align-items: flex-start;
-        background: #2c1810;
-    }
-    
-    .notebook {
-        width: 100%;
-        max-width: 100%;
-        margin: 0 auto;
-        border: 1px solid #8b4513;
     }
     
     .paper {
-        min-width: auto;
-        width: 100%;
         padding: 20px 25px 20px 35px;
-        min-height: 85vh;
-    }
-    
-    .header h1 {
-        font-size: 1.5rem;
-        letter-spacing: 2px;
-    }
-    
-    .date {
-        font-size: 0.9rem;
-    }
-    
-    .input-area {
-        flex-direction: column;
-        gap: 10px;
-        margin-bottom: 20px;
-    }
-    
-    #taskInput {
-        font-size: 16px;
-        width: 100%;
-        padding: 14px 12px;
-    }
-    
-    .add-btn {
-        width: 100%;
-        min-width: auto;
-        padding: 14px 20px;
-    }
-    
-    .task-text {
-        font-size: 1.1rem;
-        line-height: 1.4;
-        word-wrap: break-word;
-        word-break: break-word;
-        overflow-wrap: break-word;
-        white-space: normal;
     }
     
     .task-item {
-        padding: 8px 10px 8px 35px;
-        min-height: 32px;
+        padding: 0 45px 0 40px;
     }
     
     .task-item::before {
         left: 10px;
-        font-size: 0.8rem;
     }
-    
-    .delete-btn {
-        opacity: 1;
-        font-size: 1rem;
-        padding: 3px 6px;
-    }
-    
-    .page-number {
-        bottom: 10px;
-        right: 15px;
-    }
-    
-    .tasks-container {
-        max-height: 50vh;
-    }
-}
-
-@media (max-width: 360px) {
-    .paper {
-        padding: 15px 20px 15px 30px;
-        min-height: 80vh;
-    }
-    
-    .header h1 {
-        font-size: 1.3rem;
-    }
-    
-    .task-text {
-        font-size: 1rem;
-    }
-    
-    .task-item {
-        padding: 6px 8px 6px 30px;
-    }
-}
-
-@viewport {
-    width: device-width;
-    zoom: 1.0;
-}
-
-/* СИЛЬНЫЙ ФИКС ПЕРЕНОСА */
-.task-text {
-    word-break: break-all !important;
-    overflow-wrap: anywhere !important;
-    white-space: normal !important;
-    min-width: 0;
-}
-
-@media (max-width: 768px) {
-    .task-text {
-        word-break: break-all !important;
-        overflow-wrap: anywhere !important;
-        white-space: normal !important;
-        min-width: 0;
-    }
-}
-/* ТОЧНОЕ ВЫРАВНИВАНИЕ ПО ЛИНЕЙКАМ */
-.task-item {
-    min-height: 24px;
-    line-height: 24px;
-    padding: 0 15px 0 45px;
-    margin: 0;
-}
-
-.task-text {
-    line-height: 24px;
-    padding: 0;
-    margin: 0;
-}
-
-/* Для многострочного текста */
-.task-item[data-multiline="true"] {
-    padding-top: 2px;
-    padding-bottom: 2px;
 }
