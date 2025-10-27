@@ -15,6 +15,16 @@
     
     <!-- Готические шрифты -->
     <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Cinzel+Decorative&family=MedievalSharp&family=EB+Garamond&display=swap" rel="stylesheet">
+    <!-- Кнопка установки PWA -->
+<div id="installButton" style="display: none; position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+    <button onclick="installPWA()" style="background: #5d4037; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-family: 'Cinzel Decorative', cursive;">
+        📱 Установить
+    </button>
+</div>
+<!-- Дополнительные PWA теги -->
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="Готическая Тетрадь">
+<link rel="icon" type="image/png" href="icon-192.png">
 </head>
 <body>
     <div class="notebook">

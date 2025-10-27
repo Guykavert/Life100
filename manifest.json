@@ -2,12 +2,12 @@
   "name": "Готическая Тетрадь",
   "short_name": "Тетрадь",
   "description": "Элегантный список дел в стиле старинной тетради",
-  "start_url": "/",
+  "start_url": "/Life100/",
   "display": "standalone",
   "background_color": "#fefbe7",
   "theme_color": "#5d4037",
   "orientation": "portrait",
-  "scope": "/",
+  "scope": "/Life100/",
   "icons": [
     {
       "src": "icon-192.png",
