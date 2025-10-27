@@ -248,6 +248,11 @@ ul {
     transition: all 0.3s ease;
     line-height: 1.6;
     padding: 2px 0;
+    /* СВОЙСТВА ПЕРЕНОСА ТЕКСТА */
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
 }
 
 /* Выполненная задача */
@@ -379,6 +384,11 @@ ul {
     .task-text {
         font-size: 1.1rem;
         line-height: 1.4;
+        /* СВОЙСТВА ПЕРЕНОСА ДЛЯ МОБИЛЬНЫХ */
+        word-wrap: break-word;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        white-space: normal;
     }
     
     .task-item {
