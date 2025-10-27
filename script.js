@@ -27,6 +27,23 @@ window.addEventListener('load', function() {
       });
   });
 });
+
+// СИЛЬНЫЙ ФИКС ПЕРЕНОСА ТЕКСТА
+function forceTextWrap() {
+    const taskTexts = document.querySelectorAll('.task-text');
+    
+    taskTexts.forEach(text => {
+        // Принудительно разбиваем длинные слова
+        let content = text.textContent;
+        let wrappedContent = content.replace(/([^\s]{15})/g, '$1 ');
+        text.textContent = wrappedContent;
+        
+        // Принудительные стили
+        text.style.wordBreak = 'break-all';
+        text.style.overflowWrap = 'break-word';
+        text.style.whiteSpace = 'normal';
+    });
+}
 // === КОНЕЦ ДОБАВЛЕННОГО КОДА ===
 
 // Функция для установки текущей даты
@@ -75,6 +92,7 @@ function addTask() {
             setTimeout(() => {
                 li.remove();
                 saveTasks();
+                forceTextWrap(); // Обновляем после удаления
             }, 300);
         }
     };
@@ -100,6 +118,9 @@ function addTask() {
 
     // Сохраняем задачи
     saveTasks();
+    
+    // Применяем фикс переноса
+    setTimeout(forceTextWrap, 50);
 }
 
 // Функция для сохранения списка в LocalStorage
@@ -141,6 +162,7 @@ function loadTasks() {
                 setTimeout(() => {
                     li.remove();
                     saveTasks();
+                    forceTextWrap(); // Обновляем после удаления
                 }, 300);
             }
         };
@@ -157,6 +179,9 @@ function loadTasks() {
 
         taskList.appendChild(li);
     });
+    
+    // Применяем фикс переноса для загруженных задач
+    setTimeout(forceTextWrap, 100);
 }
 
 // PWA Registration
@@ -193,7 +218,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// PWA Installation (ДОБАВИТЬ В КОНЕЦ ФАЙЛА)
+// PWA Installation
 let deferredPrompt;
 const installButton = document.getElementById('installButton');
 
@@ -238,4 +263,7 @@ window.onload = function() {
             console.log('💡 Подсказка: Добавьте приложение на главный экран для лучшего опыта!');
         }
     }, 3000);
+    
+    // Финальное применение фикса переноса
+    setTimeout(forceTextWrap, 500);
 };
