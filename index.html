@@ -3,17 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мой Книжный Список</title>
+    <title>Gothic Notebook</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Cinzel+Decorative&family=MedievalSharp&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1>Мой Список</h1>
-        <div class="input-section">
-            <input type="text" id="taskInput" placeholder="Добавить новую задачу...">
-            <button onclick="addTask()">Добавить</button>
+    <div class="notebook-container">
+        <div class="notebook-cover">
+            <h1 class="notebook-title">LIBER VITAE</h1>
+            <div class="decoration"></div>
         </div>
-        <ul id="taskList"></ul>
+        
+        <div class="notebook-paper">
+            <div class="margin-line"></div>
+            <div class="header-section">
+                <h2 class="page-title">Codex Acta</h2>
+                <div class="date-line">Anno Domini <span id="currentDate"></span></div>
+            </div>
+            
+            <div class="input-section">
+                <input type="text" id="taskInput" placeholder="Scribe novum opus...">
+                <button onclick="addTask()" class="gothic-btn">
+                    <span class="btn-text">+ Add</span>
+                    <span class="btn-decoration">✶</span>
+                </button>
+            </div>
+            
+            <div class="lines-container">
+                <ul id="taskList"></ul>
+            </div>
+            
+            <div class="page-number">I</div>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
