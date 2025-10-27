@@ -30,7 +30,17 @@ body {
     padding: 40px 50px 40px 60px;
     min-height: 700px;
     background: 
-        linear-gradient(to bottom, #fefbe7 0%, #fcf5e3 100%),
+        linear-gradient(to bottom, #fefbe7 0%, #fcf5e3 100%);
+}
+
+/* ЛИНЕЙКИ ТЕТРАДИ - ВЕРНУЛ */
+.lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
         repeating-linear-gradient(
             to bottom,
             transparent,
@@ -38,11 +48,34 @@ body {
             #e0d6c8 24px,
             #e0d6c8 25px
         );
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* ЛЕВОЕ ПОЛЕ ТЕТРАДИ - ВЕРНУЛ */
+.paper::before {
+    content: '';
+    position: absolute;
+    left: 30px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: 
+        repeating-linear-gradient(
+            to bottom,
+            transparent,
+            transparent 5px,
+            #d4c4b4 5px,
+            #d4c4b4 7px
+        );
+    z-index: 1;
 }
 
 .header {
     text-align: center;
     margin-bottom: 30px;
+    position: relative;
+    z-index: 2;
 }
 
 .header h1 {
@@ -63,6 +96,8 @@ body {
     display: flex;
     gap: 15px;
     margin-bottom: 25px;
+    position: relative;
+    z-index: 2;
 }
 
 #taskInput {
@@ -88,6 +123,8 @@ body {
 }
 
 .tasks-container {
+    position: relative;
+    z-index: 2;
     max-height: 400px;
     overflow-y: auto;
 }
@@ -159,6 +196,7 @@ ul {
     font-family: 'Cinzel Decorative', cursive;
     color: #8d6e63;
     font-size: 0.9rem;
+    z-index: 2;
 }
 
 @media (max-width: 768px) {
