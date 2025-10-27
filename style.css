@@ -1,5 +1,5 @@
 /* Готические шрифты */
-@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Cinzel+Decorative:wght@400;700;900&family=MedievalSharp&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Cinzel+Decorative:wght@400;700&family=MedievalSharp&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
 
 * {
     margin: 0;
@@ -10,167 +10,112 @@
 body {
     font-family: 'EB Garamond', serif;
     background: 
-        linear-gradient(
-            rgba(20, 15, 10, 0.9),
-            rgba(40, 30, 20, 0.9)
-        ),
-        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" opacity="0.1"><rect fill="%23555" width="100" height="100"/><path d="M0 0L100 100M100 0L0 100" stroke="%23444" stroke-width="1"/></svg>');
+        linear-gradient(135deg, #2c1810 0%, #1a120b 100%),
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 10px,
+            rgba(139, 69, 19, 0.1) 10px,
+            rgba(139, 69, 19, 0.1) 20px
+        );
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
-    color: #2c1810;
 }
 
-/* Контейнер тетради */
-.notebook-container {
-    display: flex;
-    gap: 30px;
-    align-items: flex-start;
-    max-width: 900px;
-}
-
-/* Обложка тетради */
-.notebook-cover {
-    background: 
-        linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%),
-        repeating-linear-gradient(
-            45deg,
-            transparent,
-            transparent 10px,
-            #8b4513 10px,
-            #8b4513 12px
-        );
-    border: 8px solid #5d4037;
-    border-radius: 8px 20px 20px 8px;
-    padding: 40px 30px;
+/* Тетрадь */
+.notebook {
+    background: #fefbe7;
+    border: 2px solid #8b4513;
+    border-radius: 2px;
     box-shadow: 
-        inset 0 0 30px rgba(139, 69, 19, 0.5),
-        0 10px 40px rgba(0, 0, 0, 0.7);
-    min-width: 200px;
+        0 10px 30px rgba(0, 0, 0, 0.5),
+        inset 0 0 0 1px #e8dfca;
     position: relative;
     overflow: hidden;
 }
 
-.notebook-cover::before {
-    content: '';
+/* Бумага с линейками */
+.paper {
+    position: relative;
+    padding: 40px 50px 40px 60px;
+    min-height: 700px;
+    min-width: 600px;
+    background: 
+        linear-gradient(to bottom, #fefbe7 0%, #fcf5e3 100%);
+}
+
+/* Линейки тетради */
+.lines {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #c19a6b, transparent);
-}
-
-.notebook-title {
-    font-family: 'UnifrakturMaguntia', cursive;
-    font-size: 2.2rem;
-    color: #c19a6b;
-    text-align: center;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-    letter-spacing: 3px;
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-    margin: 0 auto;
-}
-
-.decoration {
-    width: 60px;
-    height: 60px;
-    border: 2px solid #c19a6b;
-    border-radius: 50%;
-    margin: 20px auto;
-    position: relative;
-}
-
-.decoration::before,
-.decoration::after {
-    content: '✠';
-    position: absolute;
-    color: #c19a6b;
-    font-size: 1.5rem;
-}
-
-.decoration::before {
-    top: -30px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.decoration::after {
-    bottom: -30px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-/* Страница тетради */
-.notebook-paper {
+    bottom: 0;
     background: 
-        linear-gradient(180deg, #fefefe 0%, #f8f6f2 100%),
         repeating-linear-gradient(
-            0deg,
+            to bottom,
             transparent,
             transparent 23px,
-            #e0e0e0 23px,
-            #e0e0e0 24px
+            #e0d6c8 23px,
+            #e0d6c8 24px
         );
-    border: 1px solid #d4c4b4;
-    border-radius: 2px;
-    padding: 40px 50px 40px 60px;
-    box-shadow: 
-        0 4px 20px rgba(0, 0, 0, 0.3),
-        inset 0 0 50px rgba(139, 69, 19, 0.1);
-    position: relative;
-    min-height: 600px;
-    flex: 1;
+    pointer-events: none;
+    z-index: 1;
 }
 
-/* Линия сгиба */
-.margin-line {
+/* Левое поле тетради */
+.paper::before {
+    content: '';
     position: absolute;
     left: 30px;
     top: 0;
     bottom: 0;
     width: 1px;
-    background: repeating-linear-gradient(
-        180deg,
-        transparent,
-        transparent 5px,
-        #d4c4b4 5px,
-        #d4c4b4 7px
-    );
+    background: 
+        repeating-linear-gradient(
+            to bottom,
+            transparent,
+            transparent 5px,
+            #d4c4b4 5px,
+            #d4c4b4 7px
+        );
+    z-index: 1;
 }
 
-/* Заголовок страницы */
-.header-section {
+/* Заголовок */
+.header {
     text-align: center;
     margin-bottom: 30px;
-    border-bottom: 2px double #8b4513;
-    padding-bottom: 15px;
+    position: relative;
+    z-index: 2;
 }
 
-.page-title {
+.header h1 {
     font-family: 'Cinzel Decorative', cursive;
-    font-size: 2rem;
+    font-size: 2.2rem;
     color: #2c1810;
-    margin-bottom: 8px;
-    letter-spacing: 2px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    letter-spacing: 3px;
+    margin-bottom: 10px;
 }
 
-.date-line {
+.date {
     font-family: 'MedievalSharp', cursive;
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: #5d4037;
     font-style: italic;
 }
 
 /* Поле ввода */
-.input-section {
+.input-area {
     display: flex;
     gap: 15px;
     margin-bottom: 25px;
-    align-items: center;
+    position: relative;
+    z-index: 2;
 }
 
 #taskInput {
@@ -179,16 +124,20 @@ body {
     border: 1px solid #bcaaa4;
     border-radius: 3px;
     font-family: 'EB Garamond', serif;
-    font-size: 1.1rem;
-    background: rgba(255, 255, 255, 0.8);
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    font-size: 1.2rem;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 
+        inset 0 1px 3px rgba(0, 0, 0, 0.1),
+        0 2px 4px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
 }
 
 #taskInput:focus {
     outline: none;
     border-color: #8b4513;
-    box-shadow: 0 0 5px rgba(139, 69, 19, 0.3);
+    box-shadow: 
+        inset 0 1px 3px rgba(0, 0, 0, 0.2),
+        0 0 8px rgba(139, 69, 19, 0.3);
 }
 
 #taskInput::placeholder {
@@ -196,9 +145,9 @@ body {
     font-style: italic;
 }
 
-/* Готическая кнопка */
-.gothic-btn {
-    background: linear-gradient(135deg, #2c1810 0%, #5d4037 50%, #2c1810 100%);
+/* Кнопка добавления */
+.add-btn {
+    background: linear-gradient(135deg, #2c1810 0%, #5d4037 100%);
     border: 2px solid #8b4513;
     border-radius: 5px;
     color: #d7ccc8;
@@ -206,90 +155,94 @@ body {
     font-family: 'Cinzel Decorative', cursive;
     font-size: 1rem;
     cursor: pointer;
-    position: relative;
-    overflow: hidden;
     transition: all 0.3s ease;
     box-shadow: 
         0 4px 8px rgba(0, 0, 0, 0.3),
         inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    min-width: 100px;
+    min-width: 120px;
+    position: relative;
+    overflow: hidden;
 }
 
-.gothic-btn:hover {
+.add-btn:hover {
     transform: translateY(-2px);
     box-shadow: 
         0 6px 12px rgba(0, 0, 0, 0.4),
         inset 0 1px 0 rgba(255, 255, 255, 0.3);
-    background: linear-gradient(135deg, #3e2723 0%, #6d4c41 50%, #3e2723 100%);
+    background: linear-gradient(135deg, #3e2723 0%, #6d4c41 100%);
 }
 
-.gothic-btn:active {
+.add-btn:active {
     transform: translateY(0);
 }
 
-.btn-text {
-    display: block;
-    font-weight: bold;
-    letter-spacing: 1px;
+.add-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
 }
 
-.btn-decoration {
-    display: block;
-    font-size: 0.8rem;
-    opacity: 0.7;
-    margin-top: 2px;
+.add-btn:hover::before {
+    left: 100%;
 }
 
-/* Контейнер для линий */
-.lines-container {
+/* Контейнер задач */
+.tasks-container {
     position: relative;
+    z-index: 2;
 }
 
-/* Список задач с нумерацией */
+/* Список задач */
 ul {
     list-style: none;
     counter-reset: task-counter;
-    position: relative;
 }
 
 .task-item {
     counter-increment: task-counter;
     display: flex;
     align-items: center;
-    padding: 8px 15px 8px 40px;
-    margin-bottom: 5px;
-    border-bottom: 1px dashed #d7ccc8;
+    padding: 8px 15px 8px 45px;
+    margin-bottom: 2px;
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
     min-height: 32px;
+    border-bottom: 1px dashed transparent;
 }
 
+.task-item:hover {
+    border-bottom-color: #d7ccc8;
+}
+
+/* Нумерация */
 .task-item::before {
-    content: counter(task-counter, decimal-leading-zero);
+    content: counter(task-counter) ".";
     position: absolute;
-    left: 5px;
+    left: 15px;
     font-family: 'Cinzel Decorative', cursive;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     color: #8d6e63;
     font-weight: bold;
     width: 25px;
     text-align: right;
 }
 
-.task-item:hover {
-    background: rgba(139, 69, 19, 0.05);
-}
-
 .task-text {
     flex-grow: 1;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     font-family: 'EB Garamond', serif;
     transition: all 0.3s ease;
-    line-height: 1.4;
+    line-height: 1.6;
+    padding: 2px 0;
 }
 
-/* Стиль для выполненной задачи */
+/* Выполненная задача */
 .completed .task-text {
     text-decoration: line-through;
     color: #8d6e63;
@@ -307,12 +260,13 @@ ul {
     border: 1px solid #bcaaa4;
     color: #5d4037;
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     padding: 4px 8px;
     border-radius: 3px;
     transition: all 0.3s ease;
     font-family: 'MedievalSharp', cursive;
     opacity: 0;
+    margin-left: 10px;
 }
 
 .task-item:hover .delete-btn {
@@ -328,25 +282,37 @@ ul {
 /* Номер страницы */
 .page-number {
     position: absolute;
-    bottom: 15px;
-    right: 20px;
+    bottom: 20px;
+    right: 30px;
     font-family: 'Cinzel Decorative', cursive;
     color: #8d6e63;
     font-size: 0.9rem;
+    z-index: 2;
 }
 
-/* Адаптивность */
-@media (max-width: 768px) {
-    .notebook-container {
-        flex-direction: column;
+/* Анимации */
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(-10px); 
     }
-    
-    .notebook-cover {
-        writing-mode: horizontal-tb;
-        min-width: auto;
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
     }
-    
-    .notebook-title {
-        writing-mode: horizontal-tb;
+}
+
+@keyframes fadeOut {
+    from { 
+        opacity: 1; 
+        transform: translateX(0); 
     }
+    to { 
+        opacity: 0; 
+        transform: translateX(100px); 
+    }
+}
+
+.task-item {
+    animation: fadeIn 0.4s ease;
 }

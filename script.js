@@ -7,7 +7,7 @@ function setCurrentDate() {
         day: 'numeric',
         weekday: 'long'
     };
-    const dateString = now.toLocaleDateString('la-Latn', options); // Латинская дата для стиля
+    const dateString = now.toLocaleDateString('ru-RU', options);
     document.getElementById('currentDate').textContent = dateString;
 }
 
@@ -17,7 +17,7 @@ function addTask() {
     const taskText = taskInput.value.trim();
 
     if (taskText === '') {
-        alert('Inscribe aliquid!'); // "Напиши что-нибудь!" на латыни
+        alert('Пожалуйста, впишите задачу!');
         return;
     }
 
@@ -36,15 +36,14 @@ function addTask() {
     const deleteBtn = document.createElement('button');
     deleteBtn.textContent = '✕';
     deleteBtn.className = 'delete-btn';
-    deleteBtn.title = 'Delete';
+    deleteBtn.title = 'Удалить';
     deleteBtn.onclick = function(event) {
         event.stopPropagation();
-        if (confirm('Delete this entry?')) {
+        if (confirm('Удалить эту запись?')) {
             li.style.animation = 'fadeOut 0.3s ease';
             setTimeout(() => {
                 li.remove();
                 saveTasks();
-                updateTaskNumbers();
             }, 300);
         }
     };
@@ -55,7 +54,7 @@ function addTask() {
     taskList.appendChild(li);
 
     // Анимация появления
-    li.style.animation = 'fadeIn 0.5s ease';
+    li.style.animation = 'fadeIn 0.4s ease';
 
     // Очищаем поле ввода
     taskInput.value = '';
@@ -70,15 +69,6 @@ function addTask() {
 
     // Сохраняем задачи
     saveTasks();
-    updateTaskNumbers();
-}
-
-// Функция для обновления нумерации
-function updateTaskNumbers() {
-    const tasks = document.querySelectorAll('.task-item');
-    tasks.forEach((task, index) => {
-        // CSS counter автоматически обновит нумерацию
-    });
 }
 
 // Функция для сохранения списка в LocalStorage
@@ -112,15 +102,14 @@ function loadTasks() {
         const deleteBtn = document.createElement('button');
         deleteBtn.textContent = '✕';
         deleteBtn.className = 'delete-btn';
-        deleteBtn.title = 'Delete';
+        deleteBtn.title = 'Удалить';
         deleteBtn.onclick = function(event) {
             event.stopPropagation();
-            if (confirm('Delete this entry?')) {
+            if (confirm('Удалить эту запись?')) {
                 li.style.animation = 'fadeOut 0.3s ease';
                 setTimeout(() => {
                     li.remove();
                     saveTasks();
-                    updateTaskNumbers();
                 }, 300);
             }
         };
@@ -137,24 +126,7 @@ function loadTasks() {
 
         taskList.appendChild(li);
     });
-    
-    updateTaskNumbers();
 }
-
-// Добавляем CSS анимации
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(-10px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-    
-    @keyframes fadeOut {
-        from { opacity: 1; transform: translateX(0); }
-        to { opacity: 0; transform: translateX(100px); }
-    }
-`;
-document.head.appendChild(style);
 
 // Загружаем задачи при загрузке страницы
 window.onload = function() {
