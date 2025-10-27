@@ -248,11 +248,11 @@ ul {
     transition: all 0.3s ease;
     line-height: 1.6;
     padding: 2px 0;
-    /* СИЛЬНЫЙ ФИКС ПЕРЕНОСА */
-    word-break: break-all !important;
-    overflow-wrap: anywhere !important;
-    hyphens: auto !important;
-    white-space: normal !important;
+    /* ФИКС ШИРИНЫ ДЛЯ ПЕРЕНОСА */
+    max-width: calc(100% - 50px);
+    word-break: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
     min-width: 0;
 }
 
@@ -385,11 +385,11 @@ ul {
     .task-text {
         font-size: 1.1rem;
         line-height: 1.4;
-        /* СИЛЬНЫЙ ФИКС ДЛЯ МОБИЛЬНЫХ */
-        word-break: break-all !important;
-        overflow-wrap: anywhere !important;
-        hyphens: auto !important;
-        white-space: normal !important;
+        /* ФИКС ШИРИНЫ ДЛЯ МОБИЛЬНЫХ */
+        max-width: calc(100% - 45px);
+        word-break: break-word;
+        overflow-wrap: break-word;
+        white-space: normal;
         min-width: 0;
     }
     
