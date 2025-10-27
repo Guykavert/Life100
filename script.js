@@ -44,6 +44,26 @@ function forceTextWrap() {
         text.style.whiteSpace = 'normal';
     });
 }
+
+// ВЫРАВНИВАНИЕ ПО ЛИНЕЙКАМ
+function alignToLines() {
+    const taskItems = document.querySelectorAll('.task-item');
+    const lineHeight = 24; // Высота строки тетради
+    
+    taskItems.forEach(item => {
+        const text = item.querySelector('.task-text');
+        const textHeight = text.scrollHeight;
+        const lines = Math.ceil(textHeight / lineHeight);
+        
+        if (lines > 1) {
+            item.setAttribute('data-multiline', 'true');
+            item.style.minHeight = (lines * lineHeight) + 'px';
+        } else {
+            item.setAttribute('data-multiline', 'false');
+            item.style.minHeight = lineHeight + 'px';
+        }
+    });
+}
 // === КОНЕЦ ДОБАВЛЕННОГО КОДА ===
 
 // Функция для установки текущей даты
@@ -93,6 +113,7 @@ function addTask() {
                 li.remove();
                 saveTasks();
                 forceTextWrap(); // Обновляем после удаления
+                alignToLines(); // Обновляем после удаления
             }, 300);
         }
     };
@@ -119,8 +140,9 @@ function addTask() {
     // Сохраняем задачи
     saveTasks();
     
-    // Применяем фикс переноса
+    // Применяем фиксы
     setTimeout(forceTextWrap, 50);
+    setTimeout(alignToLines, 60);
 }
 
 // Функция для сохранения списка в LocalStorage
@@ -163,6 +185,7 @@ function loadTasks() {
                     li.remove();
                     saveTasks();
                     forceTextWrap(); // Обновляем после удаления
+                    alignToLines(); // Обновляем после удаления
                 }, 300);
             }
         };
@@ -180,8 +203,9 @@ function loadTasks() {
         taskList.appendChild(li);
     });
     
-    // Применяем фикс переноса для загруженных задач
+    // Применяем фиксы для загруженных задач
     setTimeout(forceTextWrap, 100);
+    setTimeout(alignToLines, 150);
 }
 
 // PWA Registration
@@ -264,6 +288,7 @@ window.onload = function() {
         }
     }, 3000);
     
-    // Финальное применение фикса переноса
+    // Финальное применение фиксов
     setTimeout(forceTextWrap, 500);
+    setTimeout(alignToLines, 600);
 };
