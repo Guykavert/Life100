@@ -23,6 +23,7 @@ body {
     border-radius: 2px;
     width: 100%;
     max-width: 600px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .paper {
@@ -33,7 +34,7 @@ body {
         linear-gradient(to bottom, #fefbe7 0%, #fcf5e3 100%);
 }
 
-/* ЛИНЕЙКИ */
+/* ЛИНЕЙКИ ТЕТРАДИ */
 .lines {
     position: absolute;
     top: 0;
@@ -52,7 +53,7 @@ body {
     z-index: 1;
 }
 
-/* ЛЕВОЕ ПОЛЕ */
+/* ЛЕВОЕ ПОЛЕ ТЕТРАДИ */
 .paper::before {
     content: '';
     position: absolute;
@@ -158,17 +159,18 @@ ul {
     line-height: 24px;
 }
 
+/* ВЫРАВНИВАНИЕ И ПЕРЕНОС ТЕКСТА */
 .task-text {
     display: block;
     font-size: 1.2rem;
     font-family: 'EB Garamond', serif;
     line-height: 24px;
-    word-break: break-all;
+    word-break: break-word;
     overflow-wrap: break-word;
     white-space: normal;
     padding: 0;
     margin: 0;
-    background: rgba(254, 251, 231, 0.8);
+    background: rgba(254, 251, 231, 0.9);
 }
 
 .completed .task-text {
@@ -186,7 +188,7 @@ ul {
     color: #5d4037;
     cursor: pointer;
     font-size: 1rem;
-    padding: 2px 6px;
+    padding: 4px 8px;
     border-radius: 3px;
     font-family: 'MedievalSharp', cursive;
 }
@@ -201,20 +203,101 @@ ul {
     z-index: 2;
 }
 
+/* МОБИЛЬНАЯ АДАПТАЦИЯ */
 @media (max-width: 768px) {
     body {
         padding: 10px;
+        display: block;
+        align-items: flex-start;
+    }
+    
+    .notebook {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
     }
     
     .paper {
         padding: 20px 25px 20px 35px;
+        min-height: 500px;
+    }
+    
+    .header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .date {
+        font-size: 0.9rem;
+    }
+    
+    .input-area {
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    
+    #taskInput {
+        font-size: 16px;
+        width: 100%;
+        padding: 14px 12px;
+    }
+    
+    .add-btn {
+        width: 100%;
+        min-width: auto;
+        padding: 14px 20px;
     }
     
     .task-item {
         padding: 0 45px 0 40px;
+        min-height: 44px;
+        line-height: 24px;
+    }
+    
+    .task-text {
+        font-size: 1.1rem;
+        line-height: 24px;
+        background: rgba(254, 251, 231, 0.95);
     }
     
     .task-item::before {
-        left: 10px;
+        left: 12px;
+        font-size: 0.8rem;
+    }
+    
+    .delete-btn {
+        opacity: 1;
+        font-size: 1rem;
+        padding: 6px 10px;
+        min-width: 44px;
+        min-height: 44px;
+    }
+    
+    .page-number {
+        bottom: 10px;
+        right: 15px;
+    }
+    
+    .tasks-container {
+        max-height: 50vh;
+    }
+}
+
+/* ОЧЕНЬ МАЛЕНЬКИЕ ЭКРАНЫ */
+@media (max-width: 360px) {
+    .paper {
+        padding: 15px 20px 15px 30px;
+    }
+    
+    .header h1 {
+        font-size: 1.3rem;
+    }
+    
+    .task-text {
+        font-size: 1rem;
+    }
+    
+    .task-item {
+        padding: 0 40px 0 35px;
     }
 }
