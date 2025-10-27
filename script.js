@@ -141,6 +141,27 @@ if ('serviceWorker' in navigator) {
   });
 }
 
+// Улучшения для мобильных устройств
+document.addEventListener('DOMContentLoaded', function() {
+    // Предотвращение двойного тапа для масштабирования
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', function (event) {
+        const now = (new Date()).getTime();
+        if (now - lastTouchEnd <= 300) {
+            event.preventDefault();
+        }
+        lastTouchEnd = now;
+    }, false);
+
+    // Улучшение фокуса на поле ввода
+    const taskInput = document.getElementById('taskInput');
+    taskInput.addEventListener('focus', function() {
+        setTimeout(() => {
+            this.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 300);
+    });
+});
+
 // Загружаем задачи при загрузке страницы
 window.onload = function() {
     setCurrentDate();

@@ -35,6 +35,8 @@ body {
         inset 0 0 0 1px #e8dfca;
     position: relative;
     overflow: hidden;
+    width: 100%;
+    max-width: 600px;
 }
 
 /* Бумага с линейками */
@@ -42,7 +44,6 @@ body {
     position: relative;
     padding: 40px 50px 40px 60px;
     min-height: 700px;
-    min-width: 600px;
     background: 
         linear-gradient(to bottom, #fefbe7 0%, #fcf5e3 100%);
 }
@@ -195,6 +196,9 @@ body {
 .tasks-container {
     position: relative;
     z-index: 2;
+    max-height: 400px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 /* Список задач */
@@ -214,6 +218,10 @@ ul {
     position: relative;
     min-height: 32px;
     border-bottom: 1px dashed transparent;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .task-item:hover {
@@ -315,4 +323,112 @@ ul {
 
 .task-item {
     animation: fadeIn 0.4s ease;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+        display: block;
+        min-height: 100vh;
+        align-items: flex-start;
+        background: #2c1810;
+    }
+    
+    .notebook {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        border: 1px solid #8b4513;
+    }
+    
+    .paper {
+        min-width: auto;
+        width: 100%;
+        padding: 20px 25px 20px 35px;
+        min-height: 85vh;
+    }
+    
+    .header h1 {
+        font-size: 1.5rem;
+        letter-spacing: 2px;
+    }
+    
+    .date {
+        font-size: 0.9rem;
+    }
+    
+    .input-area {
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    
+    #taskInput {
+        font-size: 16px;
+        width: 100%;
+        padding: 14px 12px;
+    }
+    
+    .add-btn {
+        width: 100%;
+        min-width: auto;
+        padding: 14px 20px;
+    }
+    
+    .task-text {
+        font-size: 1.1rem;
+        line-height: 1.4;
+    }
+    
+    .task-item {
+        padding: 8px 10px 8px 35px;
+        min-height: 32px;
+    }
+    
+    .task-item::before {
+        left: 10px;
+        font-size: 0.8rem;
+    }
+    
+    .delete-btn {
+        opacity: 1;
+        font-size: 1rem;
+        padding: 3px 6px;
+    }
+    
+    .page-number {
+        bottom: 10px;
+        right: 15px;
+    }
+    
+    .tasks-container {
+        max-height: 50vh;
+    }
+}
+
+/* Особые правки для очень маленьких экранов */
+@media (max-width: 360px) {
+    .paper {
+        padding: 15px 20px 15px 30px;
+        min-height: 80vh;
+    }
+    
+    .header h1 {
+        font-size: 1.3rem;
+    }
+    
+    .task-text {
+        font-size: 1rem;
+    }
+    
+    .task-item {
+        padding: 6px 8px 6px 30px;
+    }
+}
+
+/* Исправление viewport для мобильных */
+@viewport {
+    width: device-width;
+    zoom: 1.0;
 }
