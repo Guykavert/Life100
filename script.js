@@ -28,20 +28,24 @@ window.addEventListener('load', function() {
   });
 });
 
-// СИЛЬНЫЙ ФИКС ПЕРЕНОСА ТЕКСТА
+// ОЧЕНЬ СИЛЬНЫЙ ФИКС - ПЕРЕНОСИТ ВСЁ
 function forceTextWrap() {
     const taskTexts = document.querySelectorAll('.task-text');
     
     taskTexts.forEach(text => {
-        // Принудительно разбиваем длинные слова
         let content = text.textContent;
-        let wrappedContent = content.replace(/([^\s]{15})/g, '$1 ');
-        text.textContent = wrappedContent;
         
-        // Принудительные стили
+        // Разбиваем каждые 8 символов мягким переносом
+        let wrappedContent = content.replace(/(.{8})/g, '$1\u200B');
+        
+        text.innerHTML = wrappedContent;
+        
+        // Максимально принудительные стили
         text.style.wordBreak = 'break-all';
-        text.style.overflowWrap = 'break-word';
+        text.style.overflowWrap = 'anywhere';
         text.style.whiteSpace = 'normal';
+        text.style.hyphens = 'auto';
+        text.style.wordWrap = 'break-word';
     });
 }
 // === КОНЕЦ ДОБАВЛЕННОГО КОДА ===
